@@ -1,6 +1,5 @@
-import pytest
-
 from homework3.task1 import cache
+
 
 def test_cache_works():
     """Testing that cache function caches function calls several times"""

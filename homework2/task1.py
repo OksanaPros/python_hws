@@ -6,8 +6,9 @@ Given a file containing text. Complete using only default collections:
     4) Count every non ascii char
     5) Find most common non ascii char for document
 """
+from string import ascii_letters, punctuation
 from typing import List
-from string import punctuation, ascii_letters
+
 
 def get_longest_diverse_words(file_path: str) -> List[str]:
     with open(file_path) as file:
@@ -20,6 +21,7 @@ def get_longest_diverse_words(file_path: str) -> List[str]:
 
     only_words.sort(key=lambda item: (-len(item), -len(set(item))))
     return only_words[:10]
+
 
 def count_punctuation_chars(file_path: str) -> int:
     with open(file_path) as file:

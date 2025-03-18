@@ -22,10 +22,11 @@ from typing import Callable
 
 
 def cache(func: Callable) -> Callable:
-    def cache_func(*args, cache_dict = dict()):
+    def cache_func(*args, cache_dict=dict()):
         if args in cache_dict.keys():
             return cache_dict[args]
         res = func(*args)
         cache_dict[args] = res
         return res
+
     return cache_func
