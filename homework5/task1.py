@@ -41,16 +41,16 @@ import datetime
 
 
 class Homework:
-    def __init__(self, text, deadline):
+    def __init__(self, text: str, deadline: int):
         self.text = text
         self.deadline_timedelta = datetime.timedelta(days=deadline)
         self.created = datetime.datetime.today().isoformat(" ")
 
     @property
-    def deadline(self):
+    def deadline(self) -> str:
         return str(self.deadline_timedelta)
 
-    def is_active(self):
+    def is_active(self) -> bool:
         today = datetime.datetime.today()
         created = datetime.datetime.fromisoformat(self.created)
         time_since_hw_created = today - created
@@ -58,12 +58,12 @@ class Homework:
 
 
 class Student:
-    def __init__(self, last_name, first_name):
+    def __init__(self, last_name: str, first_name: str):
         self.last_name = last_name
         self.first_name = first_name
 
     @staticmethod
-    def do_homework(homework):
+    def do_homework(homework: Homework) -> Homework | None:
         if not homework.is_active():
             print("You are late")
             return None
@@ -71,12 +71,12 @@ class Student:
 
 
 class Teacher:
-    def __init__(self, last_name, first_name):
+    def __init__(self, last_name: str, first_name: str):
         self.last_name = last_name
         self.first_name = first_name
 
     @staticmethod
-    def create_homework(text, deadline):
+    def create_homework(text: str, deadline: int) -> Homework:
         return Homework(text, deadline)
 
 
